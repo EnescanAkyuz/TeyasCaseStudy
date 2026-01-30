@@ -8,7 +8,7 @@ export const MOCK_USERS: User[] = [
     username: 'user',
     password: 'user123',
     role: 'user',
-    avatar: 'https://i.pravatar.cc/150?u=alex'
+    avatar: 'https://i.pravatar.cc/150?u=enes'
   },
   {
     id: 'a1',

@@ -64,7 +64,7 @@ const dictionary = {
     phSubject: 'Brief summary of the issue',
     phDesc: 'Describe the details of your request...',
     // Hata mesajları
-    loginError: 'Invalid credentials. Try username: "user" or "admin"',
+    loginError: 'Invalid credentials. Incorrect username or password.',
     fieldRequired: 'This field is required'
   },
   tr: {
@@ -129,7 +129,7 @@ const dictionary = {
     phSubject: 'Sorunun kısa özeti',
     phDesc: 'Talebini detaylı bir şekilde açıkla...',
     // Hata mesajları
-    loginError: 'Geçersiz bilgiler. Kullanıcı adı: "user" veya "admin" deneyin',
+    loginError: 'Geçersiz bilgiler. Kullanıcı adı veya şifre hatalı.',
     fieldRequired: 'Bu alan zorunludur'
   }
 };

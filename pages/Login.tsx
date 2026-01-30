@@ -8,7 +8,7 @@ import { Input } from '../components/ui/Input';
 import Button from '../components/ui/Button';
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState('user');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState(''); // Default password for easier testing
   const [role, setRole] = useState<'user' | 'admin'>('user');
   const dispatch = useDispatch();
@@ -99,7 +99,7 @@ const Login: React.FC = () => {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="user123"
+                    placeholder="123"
                     required
                 />
                 
