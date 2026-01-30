@@ -9,7 +9,7 @@ import Button from '../components/ui/Button';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState(''); // Default password for easier testing
+  const [password, setPassword] = useState('');
   const [role, setRole] = useState<'user' | 'admin'>('user');
   const dispatch = useDispatch();
   const navigate = useNavigate();
