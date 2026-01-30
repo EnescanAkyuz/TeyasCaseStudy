@@ -1,0 +1,5 @@
+{
+  "name": "SupportDesk Pro",
+  "description": "A comprehensive React.js Customer Ticket System featuring role-based access (Admin/User), ticket management, real-time messaging simulation, and performance analytics using Redux Toolkit.",
+  "requestFramePermissions": []
+}
