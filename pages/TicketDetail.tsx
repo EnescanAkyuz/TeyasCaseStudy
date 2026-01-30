@@ -19,15 +19,21 @@ const TicketDetail: React.FC = () => {
   
   const [newMessage, setNewMessage] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const prevMessageCountRef = useRef<number>(0);
 
   const ticket = items.find(t => t.id === id);
 
-  // Auto-scroll
+  // Auto-scroll sadece yeni mesaj eklendiğinde
   useEffect(() => {
-    if (messagesEndRef.current) {
+    const currentCount = ticket?.messages?.length || 0;
+    // Sadece mesaj sayısı arttığında scroll yap (ilk yüklemede değil)
+    if (prevMessageCountRef.current > 0 && currentCount > prevMessageCountRef.current) {
+      if (messagesEndRef.current) {
         messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
     }
-  }, [ticket?.messages]);
+    prevMessageCountRef.current = currentCount;
+  }, [ticket?.messages?.length]);
 
   if (!ticket) {
       return (
@@ -72,7 +78,7 @@ const TicketDetail: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 h-[calc(100vh-140px)] md:h-auto flex flex-col md:block">
+    <div className="space-y-6 pb-20 md:pb-0">
       {/* Top Nav */}
       <button onClick={() => navigate('/requests')} className="text-slate-500 hover:text-slate-800 flex items-center gap-1 text-sm font-medium shrink-0">
         <span className="material-symbols-outlined text-lg">arrow_back</span>
@@ -129,7 +135,7 @@ const TicketDetail: React.FC = () => {
       </div>
 
       {/* Discussion Area */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col flex-1 min-h-0 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col min-h-[60vh] md:min-h-[400px] overflow-hidden">
         <div className="p-4 border-b border-slate-200 shrink-0">
             <h3 className="font-bold text-slate-700 flex items-center gap-2">
                 <span className="material-symbols-outlined text-slate-400">forum</span>

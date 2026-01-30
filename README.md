@@ -44,6 +44,15 @@ Sistemi denemek için aşağıdaki hesapları kullanabilirsiniz.
 *   Talepler filtrelenebilir (Açık, Kapalı, vb.).
 *   Taleplere yorum/cevap yazılabilir.
 
+## Mobil & Tablet Uyumluluk
+
+Proje, farklı ekran boyutlarında sorunsuz çalışacak şekilde optimize edilmiştir:
+
+*   **Mobil Tarayıcı Desteği:** Android Chrome gibi tarayıcılarda adres çubuğu göründüğünde/gizlendiğinde layout bozulması önlendi (`100dvh` kullanımı).
+*   **Fixed Bottom Navigation:** Mobilde alt navigasyon her zaman görünür ve erişilebilir durumda. Safe-area desteği ile çentikli (notch) telefonlarda da düzgün görünüm.
+*   **Tablet Görünümü (iPad Air vb.):** 820px genişliğinde dikey modda kartlar 2 sütunlu grid olarak gösteriliyor, tablo görünümü sadece 1024px üzeri ekranlarda aktif.
+*   **Scroll Pozisyonu:** Sayfalar arası geçişte scroll pozisyonu sıfırlanıyor, her sayfa en üstten başlıyor.
+
 ## Yapılanlar
 
 Projeyi geliştirirken şunları kullandım:

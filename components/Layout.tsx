@@ -1,5 +1,5 @@
-import React from 'react';
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { logout } from '../store/authSlice';
@@ -9,7 +9,16 @@ const Layout: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const mainRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
+
+  // Sayfa değiştiğinde scroll'u sıfırla
+  useEffect(() => {
+    if (mainRef.current) {
+      mainRef.current.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -17,7 +26,7 @@ const Layout: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen bg-slate-50">
+    <div className="flex h-[100dvh] bg-slate-50">
       {/* Sidebar */}
       <aside className="w-64 bg-white border-r border-slate-200 hidden md:flex flex-col">
         <div className="p-6 flex items-center gap-3">
@@ -75,7 +84,7 @@ const Layout: React.FC = () => {
       </aside>
 
       {/* Mobile Header */}
-      <div className="flex-1 flex flex-col h-screen overflow-hidden">
+      <div className="flex-1 flex flex-col h-[100dvh] overflow-hidden">
         <header className="md:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
                 <div className="bg-blue-600 text-white p-1.5 rounded">
@@ -89,14 +98,14 @@ const Layout: React.FC = () => {
         </header>
 
         {/* İçerik */}
-        <main className="flex-1 overflow-auto p-4 md:p-8">
+        <main ref={mainRef} className="flex-1 overflow-auto p-4 pb-20 md:p-8 md:pb-8">
             <div className="max-w-5xl mx-auto">
                 <Outlet />
             </div>
         </main>
         
-        {/* Mobile Bottom Nav */}
-        <nav className="md:hidden bg-white border-t border-slate-200 flex justify-around p-3">
+        {/* Mobile Bottom Nav - Fixed at bottom */}
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex justify-around p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] z-50">
             <NavLink to="/requests" className={({isActive}) => `flex flex-col items-center gap-1 ${isActive ? 'text-blue-600' : 'text-slate-500'}`}>
                 <span className="material-symbols-outlined">list_alt</span>
                 <span className="text-xs">{t('tickets')}</span>

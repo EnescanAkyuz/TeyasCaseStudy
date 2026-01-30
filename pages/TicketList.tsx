@@ -60,8 +60,8 @@ const TicketList: React.FC = () => {
       </div>
 
       {/* Filtre */}
-      <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="md:col-span-2">
+      <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="sm:col-span-2">
             <Input 
                 fullWidth
                 placeholder={t('searchPlaceholder')} 
@@ -113,8 +113,8 @@ const TicketList: React.FC = () => {
           />
         ) : (
           <>
-            {/* Masaüstü Görünüm */}
-            <div className="hidden md:block bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            {/* Masaüstü Görünüm - lg ve üzeri */}
+            <div className="hidden lg:block bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200 text-xs uppercase text-slate-500 font-semibold">
@@ -159,14 +159,14 @@ const TicketList: React.FC = () => {
               </table>
             </div>
 
-            {/* Mobil Görünüm */}
-            <div className="md:hidden space-y-4">
+            {/* Tablet ve Mobil Görünüm - lg altı */}
+            <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filteredTickets.map((ticket) => (
                     <div key={ticket.id} className="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
                         <div className="flex justify-between items-start mb-3">
-                             <div>
-                                <h3 className="font-semibold text-slate-900 line-clamp-1">{ticket.subject}</h3>
-                                <p className="text-xs text-slate-500">#{ticket.id}</p>
+                             <div className="flex-1 min-w-0 pr-2">
+                                <h3 className="font-semibold text-slate-900 line-clamp-2">{ticket.subject}</h3>
+                                <p className="text-xs text-slate-500 mt-1">#{ticket.id}</p>
                              </div>
                              <StatusBadge status={ticket.status} />
                         </div>
